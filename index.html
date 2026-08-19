@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>For You</title>
+    <meta name="description" content="A birthday surprise that starts with a present." />
+    <link rel="stylesheet" href="styles.css?v=59" />
+    <script src="script.js?v=59" defer></script>
+  </head>
+  <body>
+    <main class="birthday-flow">
+      <div class="floral-intro" aria-hidden="true">
+        <div class="floral-intro__wash"></div>
+        <div class="floral-intro__flowers" id="introFlowers"></div>
+        <div class="floral-intro__title">
+          <span>For</span>
+          <strong>Sofea</strong>
+        </div>
+      </div>
+
+      <section
+        class="env-stage env-palette-mixed phase-sealed"
+        data-phase="sealed"
+        id="envelopeStage"
+        aria-labelledby="envelope-intro-title"
+      >
+        <div class="env-hint is-introducing">Tap the envelope</div>
+
+        <div class="flower-burst" id="burstFlowers" aria-hidden="true"></div>
+
+        <div class="env-slide is-introducing">
+          <img
+            class="env-sprite env-closed"
+            src="assets/envelope-closed.webp"
+            alt=""
+            draggable="false"
+          />
+          <img
+            class="env-sprite env-open"
+            src="extracted-images/gift-preview/envelope-open-back.webp"
+            alt=""
+            draggable="false"
+          />
+
+          <div class="env-sprite env-letter-address" aria-hidden="true">
+            <div class="env-letter-address-line env-letter-address-line--from">
+              <span class="env-letter-address-label">From</span>
+              <span class="env-letter-address-name" id="envelope-intro-title">Mil</span>
+            </div>
+            <div class="env-letter-address-line env-letter-address-line--for">
+              <span class="env-letter-address-label">For</span>
+              <span class="env-letter-address-name">Sofea</span>
+            </div>
+          </div>
+
+          <span class="wax-break" aria-hidden="true">
+            <img class="wax-shard" src="extracted-images/gift-preview/wax-shards.webp" alt="" />
+          </span>
+
+          <img
+            class="env-sprite env-folded-letter"
+            src="extracted-images/gift-preview/letter-folded.webp"
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+          />
+
+          <button
+            class="env-open-trigger"
+            type="button"
+            disabled
+            aria-label="Open Sofea's birthday envelope"
+          ></button>
+
+          <span role="status" aria-live="polite" class="sr-only" id="envelopeStatus"></span>
+        </div>
+
+        <div class="keepsake-scene" aria-hidden="true">
+          <div class="bouquet" aria-label="A birthday bouquet for Sofea">
+            <img
+              class="bouquet-wrap bouquet-wrap--back"
+              src="extracted-images/gift-preview/bouquet_1_back.webp"
+              alt=""
+            />
+            <div class="bouquet-blooms" id="bouquetBlooms" aria-hidden="true"></div>
+            <img
+              class="bouquet-wrap bouquet-wrap--front"
+              src="extracted-images/gift-preview/bouquet_1_front.webp"
+              alt=""
+            />
+          </div>
+
+          <button
+            class="birthday-card"
+            id="birthdayCard"
+            type="button"
+            aria-label="Open Sofea's birthday message"
+          >
+            <span class="birthday-card__inner">
+              <span class="birthday-card__face birthday-card__front">
+                <img
+                  src="extracted-images/gift-preview/front.webp"
+                  alt="Happy birthday to you card with a layered birthday cake"
+                />
+              </span>
+              <span class="birthday-card__face birthday-card__back">
+                <img class="card-back-background" src="extracted-images/gift-preview/image2.webp" alt="" />
+                <span id="cardBackLayers"></span>
+                <span class="card-message-panel">
+                  <span class="card-salutation">My Sofea,</span>
+                  <span class="card-message">
+                    <span class="card-paragraph">
+                      Happy 20th birthday to the love<br />
+                      of my life. You make every day softer,<br />
+                      brighter, and more beautiful. Loving you is<br />
+                      the happiest thing my heart has ever known.
+                    </span>
+                    <span class="card-paragraph">
+                      Wherever life takes us, I will keep<br />
+                      choosing you, standing beside you,<br />
+                      and loving you more with every day.
+                    </span>
+                  </span>
+                  <span class="card-signoff">Forever yours,<strong>Mil</strong></span>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
+
+        <button
+          class="chapter-next"
+          id="chapterNext"
+          type="button"
+          disabled
+          aria-label="Continue to Sofea's birthday calendar"
+          title="Continue"
+        >
+          <span aria-hidden="true">&#8595;</span>
+        </button>
+      </section>
+
+      <section
+        class="calendar-stage"
+        id="calendarStage"
+        aria-labelledby="calendar-title"
+        aria-hidden="true"
+      >
+        <button
+          class="chapter-back"
+          id="calendarBack"
+          type="button"
+          disabled
+          aria-label="Return to the birthday card"
+          title="Back"
+        >
+          <span aria-hidden="true">&#8593;</span>
+        </button>
+
+        <div class="calendar-heading">
+          <span>A look at</span>
+          <h2 id="calendar-title">August</h2>
+          <p>Twenty years of you</p>
+        </div>
+
+        <div class="calendar-shell">
+          <div class="calendar-weekdays" aria-hidden="true">
+            <span>Sun</span>
+            <span>Mon</span>
+            <span>Tue</span>
+            <span>Wed</span>
+            <span>Thu</span>
+            <span>Fri</span>
+            <span>Sat</span>
+          </div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+
+        <div class="calendar-caption">
+          <span>28 August</span>
+          <strong>The day the world got softer.</strong>
+        </div>
+
+        <button
+          class="calendar-next"
+          id="calendarNext"
+          type="button"
+          disabled
+          aria-label="Continue to Sofea's special gifts"
+          title="Continue"
+        >
+          <span aria-hidden="true">&#8595;</span>
+        </button>
+      </section>
+
+      <section
+        class="gift-menu-stage"
+        id="giftMenuStage"
+        aria-labelledby="gift-menu-title"
+        aria-hidden="true"
+      >
+        <button
+          class="gift-menu-back"
+          id="giftMenuBack"
+          type="button"
+          disabled
+          aria-label="Return to the August calendar"
+          title="Back"
+        >
+          <span aria-hidden="true">&#8593;</span>
+        </button>
+
+        <div class="gift-menu-frame">
+          <img
+            class="gift-lace-reference"
+            src="assets/gift-lace-frame-user.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <header class="gift-menu-heading">
+            <h2 id="gift-menu-title">These are</h2>
+          </header>
+
+          <div class="gift-menu-options">
+            <button
+              class="gift-option gift-option--letter"
+              type="button"
+              data-choice="letter"
+              aria-pressed="false"
+            >
+              <span class="gift-option-art gift-option-envelope" aria-hidden="true">
+                <img
+                  class="gift-option-image gift-option-image--envelope"
+                  src="assets/gift-envelope-user-trim.png"
+                  alt=""
+                />
+              </span>
+              <strong>Letter</strong>
+            </button>
+
+            <button
+              class="gift-option gift-option--flowers"
+              type="button"
+              data-choice="flowers"
+              aria-pressed="false"
+            >
+              <span class="gift-option-art gift-option-flowers" aria-hidden="true">
+                <img
+                  class="gift-option-image gift-option-image--flowers"
+                  src="assets/flower-bouquet-red.webp"
+                  alt=""
+                />
+              </span>
+              <strong>Flowers</strong>
+            </button>
+
+            <button
+              class="gift-option gift-option--cake"
+              type="button"
+              data-choice="cake"
+              aria-pressed="false"
+            >
+              <span class="gift-option-art gift-option-cake" aria-hidden="true">
+                <img
+                  class="gift-option-image gift-option-image--cake"
+                  src="assets/gift-cake-user-trim.png"
+                  alt=""
+                />
+              </span>
+              <strong>Cake</strong>
+            </button>
+          </div>
+
+          <p class="gift-menu-footer">Special gifts for u!</p>
+        </div>
+      </section>
+
+      <section
+        class="gift-detail-stage gift-detail-stage--message"
+        id="messageGiftStage"
+        data-gift-page="letter"
+        aria-labelledby="message-gift-title"
+        aria-hidden="true"
+      >
+        <button
+          class="gift-detail-back"
+          type="button"
+          data-gift-back
+          aria-label="Return to the special gifts"
+          title="Back"
+        >
+          <span aria-hidden="true">&#8593;</span>
+        </button>
+
+        <div class="message-card-scene">
+          <div class="message-card-board">
+            <article class="message-card-paper">
+              <img
+                class="message-card-bow message-card-bow--top"
+                src="assets/message-bow-red.webp"
+                alt=""
+                aria-hidden="true"
+              />
+              <img
+                class="message-card-bow message-card-bow--bottom"
+                src="assets/message-bow-red.webp"
+                alt=""
+                aria-hidden="true"
+              />
+              <h2 id="message-gift-title">My love,</h2>
+              <p>
+                Happy 20th birthday, Sofea. Today is all about you,<br />
+                but I still feel like the lucky one.
+              </p>
+              <p>
+                You make ordinary days feel softer. Your smile, your voice,<br />
+                and the way you care stay with me more than you know.
+              </p>
+              <p>
+                I admire the person you are. You are gentle, beautiful,<br />
+                strong, and kind in a way that makes the world feel warmer.
+              </p>
+              <p>
+                I hope this year brings you peace on hard days, courage for<br />
+                every dream, and happiness that keeps finding you softly.
+              </p>
+              <p>
+                Thank you for choosing me, for being patient with me,<br />
+                and for letting me love a heart as precious as yours.
+              </p>
+              <p>
+                I love you more than these words can hold. I will keep<br />
+                choosing you, appreciating you, and loving you always.
+              </p>
+              <p class="message-card-signoff">Forever yours,<strong>Mil</strong></p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="gift-detail-stage gift-detail-stage--cake"
+        id="cakeGiftStage"
+        data-gift-page="cake"
+        aria-labelledby="cake-gift-title"
+        aria-hidden="true"
+      >
+        <button
+          class="gift-detail-back"
+          type="button"
+          data-gift-back
+          aria-label="Return to the special gifts"
+          title="Back"
+        >
+          <span aria-hidden="true">&#8593;</span>
+        </button>
+
+        <div class="gift-detail-shell gift-detail-shell--cake cake-wish-shell">
+          <div class="cake-wish-scene">
+            <button
+              class="cake-wish-button"
+              type="button"
+              data-cake-wish
+              aria-label="Click to blow out the candles"
+            >
+              <span class="cake-wish-glow" aria-hidden="true"></span>
+              <img
+                class="cake-wish-cake cake-wish-cake--lit"
+                src="assets/cake-wish-lit.png"
+                alt=""
+                aria-hidden="true"
+              />
+              <img
+                class="cake-wish-cake cake-wish-cake--unlit"
+                src="assets/cake-wish-blown.png"
+                alt=""
+                aria-hidden="true"
+              />
+              <span class="cake-wish-smoke cake-wish-smoke--one" aria-hidden="true"></span>
+              <span class="cake-wish-smoke cake-wish-smoke--two" aria-hidden="true"></span>
+              <span class="cake-wish-smoke cake-wish-smoke--three" aria-hidden="true"></span>
+              <span class="cake-wish-confetti cake-wish-confetti--one" aria-hidden="true"></span>
+              <span class="cake-wish-confetti cake-wish-confetti--two" aria-hidden="true"></span>
+              <span class="cake-wish-confetti cake-wish-confetti--three" aria-hidden="true"></span>
+              <span class="cake-wish-click-hint" aria-hidden="true">Click to blow out the candles</span>
+            </button>
+          </div>
+          <div class="gift-detail-copy gift-detail-copy--cake cake-wish-copy">
+            <p class="gift-detail-kicker">cake</p>
+            <h2 id="cake-gift-title">Make a wish</h2>
+            <p class="cake-wish-prompt">Close your eyes and keep the softest wish close.</p>
+            <p class="cake-wish-message" id="cakeWishStatus" aria-live="polite" aria-hidden="true">
+              I hope every wish you make finds its way to you.
+            </p>
+            <p class="cake-wish-sign" aria-hidden="true">Happy 20th, Darling.</p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="gift-detail-stage gift-detail-stage--flowers"
+        id="flowersGiftStage"
+        data-gift-page="flowers"
+        aria-labelledby="flowers-gift-title"
+        aria-hidden="true"
+      >
+        <button
+          class="gift-detail-back"
+          type="button"
+          data-gift-back
+          aria-label="Return to the special gifts"
+          title="Back"
+        >
+          <span aria-hidden="true">&#8593;</span>
+        </button>
+
+        <div class="flower-bouquet-page">
+          <h2 class="flower-bouquet-title" id="flowers-gift-title">
+            <span>Flower</span>
+            <span>Bouquet</span>
+          </h2>
+
+          <div
+            class="flower-bouquet-visual"
+            aria-label="A special flower bouquet made with Sofea's photos"
+          >
+            <img
+              class="flower-bouquet-base"
+              src="assets/flower-bouquet-red.webp"
+              alt=""
+              aria-hidden="true"
+            />
+
+            <span class="flower-photo-cutout flower-photo-cutout--one">
+              <img src="assets/flower-photo-1-v40.png" alt="Sofea" />
+            </span>
+            <span class="flower-photo-cutout flower-photo-cutout--two">
+              <img src="assets/flower-photo-2.png" alt="Sofea" />
+            </span>
+            <span class="flower-photo-cutout flower-photo-cutout--three">
+              <img src="assets/flower-photo-3-v41.png" alt="Sofea" />
+            </span>
+          </div>
+
+          <p class="flower-bouquet-footer" aria-label="Special for you">
+            <span>Special</span>
+            <span>for</span>
+            <span>you</span>
+          </p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
