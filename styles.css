@@ -39,13 +39,35 @@ html,
 body {
   min-height: 100%;
   margin: 0;
+  overflow-anchor: none;
 }
 
 body {
+  --active-page-bg: var(--paper);
   overflow: hidden;
-  background: var(--paper);
+  background: var(--active-page-bg);
   color: var(--ink);
   font-family: var(--font-sans), Arial, sans-serif;
+}
+
+body.surface-envelope {
+  --active-page-bg: #d9c39a;
+}
+
+body.surface-paper {
+  --active-page-bg: #efe5cf;
+}
+
+body.surface-red {
+  --active-page-bg: #4a0007;
+}
+
+body.surface-message {
+  --active-page-bg: #8a0900;
+}
+
+body.surface-cake {
+  --active-page-bg: #dfcfa9;
 }
 
 button {
@@ -54,8 +76,8 @@ button {
 
 .birthday-flow {
   min-height: 100vh;
-  min-height: 100dvh;
-  background: var(--paper);
+  min-height: max(100vh, 100dvh);
+  background: var(--active-page-bg);
 }
 
 .floral-intro {
@@ -143,7 +165,7 @@ button {
 
 .env-stage {
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: max(100vh, 100dvh);
   position: relative;
   display: flex;
   align-items: center;
@@ -724,7 +746,7 @@ button {
 .calendar-stage {
   position: relative;
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: max(100vh, 100dvh);
   overflow: hidden;
   display: grid;
   grid-template-columns: minmax(180px, 0.34fr) minmax(600px, 1fr);
@@ -1083,7 +1105,7 @@ button {
 .memories-stage {
   position: relative;
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: max(100vh, 100dvh);
   overflow: hidden;
   padding: clamp(72px, 8vh, 110px) clamp(26px, 5vw, 88px) clamp(70px, 8vh, 110px);
   background:
@@ -1338,7 +1360,7 @@ button {
 .gift-menu-stage {
   position: relative;
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: max(100vh, 100dvh);
   overflow: hidden;
   display: grid;
   place-items: center;
@@ -1618,7 +1640,7 @@ button {
 .gift-detail-stage {
   position: relative;
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: max(100vh, 100dvh);
   overflow: hidden;
   display: grid;
   place-items: center;
@@ -2939,7 +2961,7 @@ button {
   .gift-menu-stage,
   .gift-detail-stage {
     height: auto;
-    min-height: 100dvh;
+    min-height: max(100vh, 100dvh);
   }
 
   .calendar-stage:not(.is-active),

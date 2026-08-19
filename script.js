@@ -248,8 +248,26 @@ function setupInteractions() {
   const cakeWishButton = document.querySelector("[data-cake-wish]");
   const cakeWishReveals = Array.from(document.querySelectorAll(".cake-wish-message, .cake-wish-sign"));
   let giftRevealTimer = 0;
+
+  const setSurface = (surface) => {
+    document.body.classList.remove(
+      "surface-envelope",
+      "surface-paper",
+      "surface-red",
+      "surface-message",
+      "surface-cake",
+    );
+    document.body.classList.add(surface);
+  };
+
   const scrollToStage = (stage) => {
-    stage.scrollIntoView({ behavior: "smooth", block: "start" });
+    const align = () => {
+      window.scrollTo({ left: 0, top: stage.offsetTop, behavior: "auto" });
+    };
+
+    window.scrollTo({ left: 0, top: stage.offsetTop, behavior: "smooth" });
+    window.setTimeout(align, 260);
+    window.setTimeout(align, 760);
   };
   const hideGiftDetails = () => {
     giftDetailStages.forEach((stage) => {
@@ -264,6 +282,7 @@ function setupInteractions() {
     hideGiftDetails();
     stage.classList.add("is-active");
     stage.setAttribute("aria-hidden", "false");
+    setSurface(choice === "cake" ? "surface-cake" : choice === "letter" ? "surface-message" : "surface-red");
     window.setTimeout(() => scrollToStage(stage), 40);
   };
   const revealGiftMenuText = () => {
@@ -281,6 +300,8 @@ function setupInteractions() {
     document.querySelector(".floral-intro")?.remove();
     if (openTrigger && phase === "sealed") openTrigger.disabled = false;
   }, 4800);
+
+  setSurface("surface-envelope");
 
   openTrigger?.addEventListener("click", () => {
     if (phase !== "sealed" || !envelopeStage) return;
@@ -311,26 +332,34 @@ function setupInteractions() {
     if (!flipped || !calendarStage) return;
     calendarStage.classList.add("is-active");
     calendarStage.setAttribute("aria-hidden", "false");
+    setSurface("surface-paper");
     if (calendarBack) calendarBack.disabled = false;
     if (calendarNext) calendarNext.disabled = false;
     window.setTimeout(() => scrollToStage(calendarStage), 40);
   });
 
   calendarBack?.addEventListener("click", () => {
-    if (envelopeStage) scrollToStage(envelopeStage);
+    if (envelopeStage) {
+      setSurface("surface-envelope");
+      scrollToStage(envelopeStage);
+    }
   });
 
   calendarNext?.addEventListener("click", () => {
     if (!giftMenuStage) return;
     giftMenuStage.classList.add("is-active");
     giftMenuStage.setAttribute("aria-hidden", "false");
+    setSurface("surface-red");
     if (giftMenuBack) giftMenuBack.disabled = false;
     revealGiftMenuText();
     window.setTimeout(() => scrollToStage(giftMenuStage), 40);
   });
 
   giftMenuBack?.addEventListener("click", () => {
-    if (calendarStage) scrollToStage(calendarStage);
+    if (calendarStage) {
+      setSurface("surface-paper");
+      scrollToStage(calendarStage);
+    }
   });
 
   giftOptions.forEach((option) => {
@@ -357,7 +386,10 @@ function setupInteractions() {
   giftDetailBacks.forEach((button) => {
     button.addEventListener("click", () => {
       hideGiftDetails();
-      if (giftMenuStage) scrollToStage(giftMenuStage);
+      if (giftMenuStage) {
+        setSurface("surface-red");
+        scrollToStage(giftMenuStage);
+      }
     });
   });
 }
