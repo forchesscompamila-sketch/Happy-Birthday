@@ -1,6 +1,21 @@
 const assetRoot = "extracted-images/gift-preview";
 const birthdayDate = 28;
 
+if ("scrollRestoration" in window.history) {
+  window.history.scrollRestoration = "manual";
+}
+
+const resetInitialScroll = () => {
+  window.scrollTo({ left: 0, top: 0, behavior: "auto" });
+};
+
+resetInitialScroll();
+window.addEventListener("pageshow", resetInitialScroll);
+window.addEventListener("load", () => {
+  window.requestAnimationFrame(resetInitialScroll);
+  window.setTimeout(resetInitialScroll, 80);
+});
+
 const flowerAssets = [
   "assets/new-flower-white-rose.webp",
   "assets/new-flower-tulip.webp",

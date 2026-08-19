@@ -53,7 +53,8 @@ button {
 }
 
 .birthday-flow {
-  min-height: 100svh;
+  min-height: 100vh;
+  min-height: 100dvh;
   background: var(--paper);
 }
 
@@ -141,7 +142,8 @@ button {
 }
 
 .env-stage {
-  min-height: 100svh;
+  min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
   display: flex;
   align-items: center;
@@ -721,7 +723,8 @@ button {
 
 .calendar-stage {
   position: relative;
-  min-height: 100svh;
+  min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
   display: grid;
   grid-template-columns: minmax(180px, 0.34fr) minmax(600px, 1fr);
@@ -1079,7 +1082,8 @@ button {
 
 .memories-stage {
   position: relative;
-  min-height: 100svh;
+  min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
   padding: clamp(72px, 8vh, 110px) clamp(26px, 5vw, 88px) clamp(70px, 8vh, 110px);
   background:
@@ -1333,7 +1337,8 @@ button {
 
 .gift-menu-stage {
   position: relative;
-  min-height: 100svh;
+  min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
   display: grid;
   place-items: center;
@@ -1612,7 +1617,8 @@ button {
 
 .gift-detail-stage {
   position: relative;
-  min-height: 100svh;
+  min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
   display: grid;
   place-items: center;
