@@ -2168,14 +2168,16 @@ button {
 
 .cake-wish-scene {
   position: relative;
-  min-height: clamp(430px, 48vw, 650px);
+  min-height: clamp(500px, 52vw, 740px);
   display: grid;
-  place-items: center;
+  align-items: center;
+  justify-items: center;
+  padding: clamp(8px, 1.5vw, 20px) 0 clamp(58px, 5vw, 78px);
 }
 
 .cake-wish-button {
   position: relative;
-  width: min(560px, 43vw);
+  width: min(520px, 39vw);
   aspect-ratio: 0.9 / 1;
   display: grid;
   place-items: center;
@@ -2322,15 +2324,16 @@ button {
 .cake-wish-click-hint {
   position: absolute;
   left: 50%;
-  bottom: -5%;
+  bottom: -58px;
   z-index: 6;
   transform: translateX(-50%);
   width: max-content;
-  max-width: 88%;
+  max-width: min(360px, 86vw);
   color: rgba(79, 39, 48, 0.44);
   font-family: "Brush Script MT", "Segoe Script", cursive;
-  font-size: clamp(24px, 2.2vw, 38px);
-  line-height: 1;
+  font-size: clamp(22px, 1.8vw, 32px);
+  line-height: 1.04;
+  text-align: center;
   pointer-events: none;
   transition: opacity 420ms ease, transform 420ms ease;
 }
