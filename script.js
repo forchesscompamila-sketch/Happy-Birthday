@@ -248,6 +248,7 @@ function setupInteractions() {
   const cakeWishButton = document.querySelector("[data-cake-wish]");
   const cakeWishReveals = Array.from(document.querySelectorAll(".cake-wish-message, .cake-wish-sign"));
   let giftRevealTimer = 0;
+  let flowerRevealTimer = 0;
 
   const setSurface = (surface) => {
     document.body.classList.remove(
@@ -269,9 +270,17 @@ function setupInteractions() {
     window.setTimeout(align, 260);
     window.setTimeout(align, 760);
   };
+  const revealFlowerText = () => {
+    const stage = document.getElementById("flowersGiftStage");
+    if (!stage) return;
+    stage.classList.remove("is-revealing");
+    void stage.offsetWidth;
+    stage.classList.add("is-revealing");
+  };
   const hideGiftDetails = () => {
+    window.clearTimeout(flowerRevealTimer);
     giftDetailStages.forEach((stage) => {
-      stage.classList.remove("is-active");
+      stage.classList.remove("is-active", "is-revealing");
       stage.setAttribute("aria-hidden", "true");
     });
   };
@@ -283,6 +292,13 @@ function setupInteractions() {
     stage.classList.add("is-active");
     stage.setAttribute("aria-hidden", "false");
     setSurface(choice === "cake" ? "surface-cake" : choice === "letter" ? "surface-message" : "surface-red");
+    if (choice === "flowers") {
+      stage.classList.remove("is-revealing");
+      void stage.offsetWidth;
+      flowerRevealTimer = window.setTimeout(() => {
+        revealFlowerText();
+      }, 920);
+    }
     window.setTimeout(() => scrollToStage(stage), 40);
   };
   const revealGiftMenuText = () => {
