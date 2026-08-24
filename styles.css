@@ -1992,10 +1992,11 @@ button {
   padding: clamp(32px, 3.4vw, 60px) clamp(36px, 4.6vw, 78px) clamp(28px, 3vw, 54px);
   background: rgba(255, 255, 255, 0.97);
   color: #67212b;
-  font-family: "Arial Rounded MT Bold", "Trebuchet MS", "Inter", Arial, sans-serif;
-  font-size: clamp(15px, 1.2vw, 21px);
-  font-weight: 700;
-  line-height: 1.31;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  font-size: clamp(16px, 1.18vw, 21px);
+  font-weight: 500;
+  line-height: 1.26;
+  letter-spacing: 0.005em;
   text-align: center;
   box-shadow: 0 10px 20px rgba(76, 0, 0, 0.14);
 }
@@ -2015,39 +2016,48 @@ button {
 }
 
 .message-card-bow--bottom {
-  right: -4%;
-  bottom: -8%;
-  transform: rotate(171deg);
+  right: -1.8%;
+  bottom: -4.8%;
+  width: clamp(86px, 9.2vw, 142px);
+  opacity: 0.96;
+  transform: rotate(-7deg);
 }
 
 .message-card-paper h2 {
-  margin: 0 0 clamp(16px, 1.9vw, 32px);
+  margin: 0 0 clamp(10px, 1.4vw, 24px);
   color: #812230;
-  font-family: "Brush Script MT", "Segoe Script", cursive;
-  font-size: clamp(50px, 5vw, 84px);
+  font-family: "Great Vibes", "Brush Script MT", "Segoe Script", cursive;
+  font-size: clamp(58px, 5.6vw, 96px);
   font-weight: 400;
   letter-spacing: 0;
-  line-height: 0.9;
+  line-height: 0.86;
 }
 
 .message-card-paper p {
   margin: 0;
+  max-width: 680px;
+  margin-inline: auto;
 }
 
 .message-card-paper p + p {
-  margin-top: 0.48em;
+  margin-top: 0.42em;
 }
 
 .message-card-signoff {
   color: #812230;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Great Vibes", "Brush Script MT", "Segoe Script", cursive;
+  font-size: clamp(30px, 2.35vw, 46px);
   font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.95;
 }
 
 .message-card-signoff strong {
   display: block;
-  margin-top: 0.08em;
-  font-size: 1.45em;
+  margin-top: 0.12em;
+  font-size: 0.96em;
+  line-height: 0.82;
 }
 
 .gift-detail-back {
@@ -2688,8 +2698,8 @@ button {
 
   .message-card-paper {
     padding: 40px 16px 22px;
-    font-size: clamp(9px, 2.45vw, 12px);
-    line-height: 1.25;
+    font-size: clamp(11px, 2.75vw, 14px);
+    line-height: 1.16;
   }
 
   .message-card-bow {
@@ -2702,13 +2712,15 @@ button {
   }
 
   .message-card-bow--bottom {
-    right: -8%;
-    bottom: -7%;
+    right: -5%;
+    bottom: -4%;
+    width: clamp(58px, 19vw, 88px);
+    transform: rotate(-7deg);
   }
 
   .message-card-paper h2 {
-    margin-bottom: 12px;
-    font-size: clamp(36px, 11vw, 58px);
+    margin-bottom: 10px;
+    font-size: clamp(42px, 12vw, 64px);
   }
 
   .message-card-paper p + p {
@@ -3228,8 +3240,8 @@ button {
   .message-card-paper {
     justify-content: center;
     padding: 34px 14px 20px;
-    font-size: clamp(9px, 2.75vw, 12px);
-    line-height: 1.25;
+    font-size: clamp(10px, 2.9vw, 13px);
+    line-height: 1.16;
   }
 
   .message-card-paper br {
@@ -3255,8 +3267,10 @@ button {
   }
 
   .message-card-bow--bottom {
-    right: -9%;
-    bottom: -5%;
+    right: -5%;
+    bottom: -3.5%;
+    width: clamp(54px, 18vw, 82px);
+    transform: rotate(-7deg);
   }
 
   .gift-detail-shell--cake,
