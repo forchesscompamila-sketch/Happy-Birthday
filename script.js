@@ -1,5 +1,28 @@
 const assetRoot = "extracted-images/gift-preview";
 const birthdayDate = 28;
+const birthdayMusic = document.getElementById("birthdayMusic");
+let birthdayMusicStarted = false;
+let birthdayMusicStarting = false;
+
+function startBirthdayMusic() {
+  if (!birthdayMusic || birthdayMusicStarted || birthdayMusicStarting) return;
+
+  birthdayMusicStarting = true;
+  birthdayMusic.volume = 0.42;
+  birthdayMusic
+    .play()
+    .then(() => {
+      birthdayMusicStarted = true;
+      window.removeEventListener("pointerdown", startBirthdayMusic);
+      window.removeEventListener("keydown", startBirthdayMusic);
+    })
+    .catch(() => {
+      birthdayMusicStarting = false;
+    });
+}
+
+window.addEventListener("pointerdown", startBirthdayMusic);
+window.addEventListener("keydown", startBirthdayMusic);
 
 if ("scrollRestoration" in window.history) {
   window.history.scrollRestoration = "manual";
