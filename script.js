@@ -272,6 +272,7 @@ function setupInteractions() {
   const cakeWishReveals = Array.from(document.querySelectorAll(".cake-wish-message, .cake-wish-sign"));
   let giftRevealTimer = 0;
   let flowerRevealTimer = 0;
+  let stageScrollFrame = 0;
 
   const setSurface = (surface) => {
     document.body.classList.remove(
@@ -284,14 +285,40 @@ function setupInteractions() {
     document.body.classList.add(surface);
   };
 
+  const prefersReducedMotion = () =>
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   const scrollToStage = (stage) => {
-    const align = () => {
-      window.scrollTo({ left: 0, top: stage.offsetTop, behavior: "auto" });
+    if (!stage) return;
+
+    window.cancelAnimationFrame(stageScrollFrame);
+
+    const startY = window.scrollY;
+    const targetY = stage.getBoundingClientRect().top + window.scrollY;
+    const distance = targetY - startY;
+
+    if (prefersReducedMotion() || Math.abs(distance) < 2) {
+      window.scrollTo({ left: 0, top: targetY, behavior: "auto" });
+      return;
+    }
+
+    const duration = Math.min(1400, Math.max(920, Math.abs(distance) * 0.48));
+    const startTime = window.performance.now();
+    const ease = (value) =>
+      value < 0.5 ? 4 * value * value * value : 1 - Math.pow(-2 * value + 2, 3) / 2;
+
+    const step = (now) => {
+      const progress = Math.min(1, (now - startTime) / duration);
+      window.scrollTo({ left: 0, top: startY + distance * ease(progress), behavior: "auto" });
+
+      if (progress < 1) {
+        stageScrollFrame = window.requestAnimationFrame(step);
+      } else {
+        window.scrollTo({ left: 0, top: targetY, behavior: "auto" });
+      }
     };
 
-    window.scrollTo({ left: 0, top: stage.offsetTop, behavior: "smooth" });
-    window.setTimeout(align, 260);
-    window.setTimeout(align, 760);
+    stageScrollFrame = window.requestAnimationFrame(step);
   };
   const revealFlowerText = () => {
     const stage = document.getElementById("flowersGiftStage");
